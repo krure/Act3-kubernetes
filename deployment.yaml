@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: test-service2
+  name: act3-kubernetes-test-app
   namespace : ngrok-ingress-controller
 spec:
   selector:
@@ -16,6 +16,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: act3-kubernetes-test-app
+  annotations:
+    k8s.ngrok.com/modules: ngrok-module-set 
   namespace: ngrok-ingress-controller
 spec:
   selector:
@@ -38,19 +40,19 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: test-ngrok-ingress
+  name: act3-kubernetes-test-app
   namespace: ngrok-ingress-controller
 spec:
   ingressClassName: ngrok
   rules:
-    - host: bluebird-still-gladly.ngrok-free.app
+    - host: usefully-hip-sawfly.ngrok-free.app
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: test-ngrok-ingress
+                name: act3-kubernetes-test-app
                 port:
                   number: 80
 ---
