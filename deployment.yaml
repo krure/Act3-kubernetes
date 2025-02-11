@@ -31,6 +31,32 @@ spec:
     spec:
       containers:
       - name: backend
+        env:
+         - name : MYSQL_HOST
+           valueFrom:
+            secretKeyRef:
+             name: my-sql-access-secret
+             key: MYSQL_HOST
+         - name : MYSQL_USER
+           valueFrom:
+            secretKeyRef:
+             name: my-sql-access-secret
+             key: MYSQL_USER
+         - name : MYSQL_PASSWORD
+           valueFrom:
+            secretKeyRef:
+             name: my-sql-access-secret
+             key: MYSQL_PASSWORD
+         - name : MYSQL_DB
+           valueFrom:
+            secretKeyRef:
+             name: my-sql-access-secret
+             key: MYSQL_DB
+         - name : HEX_SEC_KEY
+           valueFrom:
+            secretKeyRef:
+             name: my-sql-access-secret
+             key: HEX_SEC_KEY
         image: act3-kubernetes2
         ports :
           - name: http
