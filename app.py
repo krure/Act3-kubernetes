@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, session, redirect, url_for
-import config
 import os
 from flask_mysqldb import MySQL
 from datetime import datetime
